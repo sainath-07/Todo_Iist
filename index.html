@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #fac031;
+      }
+      #container {
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 15px;
+        background-color: #eee;
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        margin-top: 25px;
+      }
+      input {
+        width: 100%;
+        height: 35px;
+        border-radius: 6px;
+        border: 2px solid #222;
+        outline: none;
+        border: none;
+      }
+      input:focus {
+        border: 2px solid yellowgreen;
+        /* outline: none; */
+      }
+      input[type="text"] {
+        font-family: "Segoe UI";
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+
+        font-size: 90%;
+      }
+      #btn {
+        /* width: 10%; */
+        border-radius: 6px;
+        height: 32px;
+        border: none;
+        outline: none;
+        /* background-color: #fac031; */
+        font-size: 120%;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .newtask {
+        font-family: "Segoe UI";
+        background-color: #eee;
+        /* color: white; */
+        display: flex;
+        justify-content: space-between;
+        padding: 11px;
+        margin: auto;
+        margin-block: 10px;
+        border-radius: 6px;
+        width: 50%;
+      }
+
+      #btn1{
+        /* background-color: #fac031; */
+        font-family: "Segoe UI";
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+      }
+      .text{
+        text-align: center;
+        font-family: "Segoe UI";
+        background-color: #55b025;
+        font-size: 120%;
+        padding: 12px;
+        margin-left: 50%;
+        box-shadow: rgba(163, 163, 193, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <span class="text">To do List</span>
+    <div id="container">
+      <input 
+        type="text" autofocus
+        id="input"
+        autocomplete="off"
+        placeholder="Enter the To do list..."
+      />
+      <!-- <i class="fa-solid fa-plus fa-2xl"></i> -->
+      <button id="btn">
+        <i class="fa-solid fa-circle-plus  fa-plus fa-2xl" style="color: #55b025;"></i>
+        
+        <!-- <i class="fa-solid "></i> -->
+
+            </button>
+    </div>
+
+    <script>
+      var input = document.getElementById("input");
+      var btn = document.getElementById("btn");
+      btn.onclick = addtolist;
+
+      function addtolist() {
+        if (input.value.length==0  || input.value==false) {
+          alert("No text found in the input box");
+        } else {
+          var getcreatediv = document.createElement("div");
+          var span = document.createElement("span");
+          var button = document.createElement("button");
+          getcreatediv.appendChild(span);
+          getcreatediv.appendChild(button);
+         
+          document.body.appendChild(getcreatediv);
+          
+          getcreatediv.setAttribute("class", "newtask");
+          button.setAttribute("id", "btn1");
+          button.innerHTML = `<i class="fa-solid fa-trash fa-shake fa-2xl" style="color: red;"></i>`;
+          span.innerText = input.value;
+          button.onclick = trash;
+          
+          function trash() {
+            getcreatediv.remove();
+            console.log("click");
+          }
+        }
+        input.value = "";
+      }
+    </script>
+  </body>
+</html>
